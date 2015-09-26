@@ -14,15 +14,11 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
 
             Property(x => x.Nome);
 
-
             Property(x => x.Lugar);
-
 
             Property(x => x.Telefone);
 
-
             Property(x => x.Email);
-               
         }
     }
 }

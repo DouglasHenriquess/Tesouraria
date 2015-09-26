@@ -7,10 +7,10 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
 {
     public class CaixaRepositorio : RepositorioBase<Caixa>, ICaixaRepositorio
     {
-        //TO DO: Realmente esta é a melhor forma?
         public override void Add(Caixa obj)
         {
             obj.Pessoa = _context.Pessoas.Find(obj.Pessoa.PessoaId);
+
             var taxas = new List<Taxa>(obj.Taxas.ToList());
             obj.Taxas.Clear();
             foreach (var taxa in taxas)
@@ -22,7 +22,6 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
             _context.SaveChanges();
         }
 
-        //TO DO: Realmente esta é a melhor forma?
         public override IList<Caixa> GetAll()
         {
             return _context.Set<Caixa>()
@@ -30,7 +29,6 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
                 .ToList();
         }
 
-        //TO DO: Realmente esta é a melhor forma?
         public override Caixa GetById(int id)
         {
             return _context.Set<Caixa>()

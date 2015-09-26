@@ -12,11 +12,7 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
                 .Property(x => x.TaxaId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            Property(x => x.Nome);
-                
-
-            Property(x => x.Valor);
-                
+            Property(x => x.Nome); Property(x => x.Valor);
         }
     }
 }
