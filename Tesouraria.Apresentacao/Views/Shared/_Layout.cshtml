@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/awesome")
+    @Styles.Render("~/Bootstrap/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Bootstrap/js")
+</head>
+<body>
+    <header class="navbar navbar-default" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span> <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="collapse navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown navbar-profile"><a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user">&nbsp;&nbsp;Olá Usuário</i> <i class="fa fa-caret-down"></i>
+                </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><i class="fa fa-cogs"></i>&nbsp;&nbsp;Configurações </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out">&nbsp;&nbsp;Sair</i> </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users">
+                    &nbsp;&nbsp;Pessoas</i> <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="~/Pessoa"><i class="fa fa-file-text">&nbsp;&nbsp;Cadastro</i> </a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-usd">
+                    &nbsp;&nbsp;Taxas</i> <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="~/Taxa"><i class="fa fa-file-text">&nbsp;&nbsp;Cadastro</i> </a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-refresh">
+                    &nbsp;&nbsp;Caixa</i> <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="~/Caixa"><i class="fa fa-calendar-check-o">&nbsp;&nbsp;Recebimento de Taxas</i></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer class="navbar navbar-default navbar-fixed-bottom" role="banner">
+        <div class="container" style="margin-top: 15px">
+            <p class="pull-left">
+                Copyright © @string.Format("{0}", DateTime.Now.Year) - UDV
+            </p>
+            <p class="pull-right">
+                Versão: @string.Format("{0}", HttpContext.Current.ApplicationInstance.GetType().BaseType.Assembly.GetName().Version)
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

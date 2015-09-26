@@ -1,0 +1,23 @@
+﻿@model Tesouraria.Apresentacao.ViewModels.TaxaViewModel
+@{
+    ViewBag.Title = "Cadastro de Taxas";
+}
+@using (Html.BeginForm("Edit", "Taxa", FormMethod.Post, new { id = "form" }))
+{
+    <h2 class="portlet-title">
+        <i class="fa fa-usd"></i>&nbsp;Editar Registro
+        <button type="button" class="btn btn-primary pull-right" id="btSalvar">
+            <span class="fa fa-save"></span><span>&nbsp;Salvar</span>
+        </button>
+        <button type="button" class="btn pull-right" style="margin-right: 10px" id="btVoltar">
+            <span class="fa fa-arrow-circle-left"></span><span>&nbsp;Voltar</span>
+        </button>
+    </h2>
+    <hr />
+    <br />
+    <fieldset>
+        @Html.Partial("Form", Model)
+        @Html.HiddenFor(x => x.TaxaId)
+    </fieldset>
+}
+<script type="text/javascript" src="~/Scripts/Tesouraria/TaxaScript.js"></script>

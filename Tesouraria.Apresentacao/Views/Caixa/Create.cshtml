@@ -1,0 +1,22 @@
+﻿@model Tesouraria.Apresentacao.ViewModels.CaixaViewModel
+@{
+    ViewBag.Title = "Recebimento de Taxas";
+}
+@using (Html.BeginForm("Create", "Caixa", FormMethod.Post, new { id = "form" }))
+{
+    <h2 class="portlet-title">
+        <i class="fa fa-calendar-check-o">&nbsp;Novo Recebimento</i>
+        <button type="button" class="btn btn-primary pull-right" id="btSalvar">
+            <span class="fa fa-check"></span><span>&nbsp;Confirmar</span>
+        </button>
+        <button type="button" class="btn pull-right" style="margin-right: 10px" id="btVoltar">
+            <span class="fa fa-arrow-circle-left"></span><span>&nbsp;&nbsp;Voltar&nbsp;&nbsp;</span>
+        </button>
+    </h2>
+    <hr />
+    <br />
+    <fieldset>
+        @Html.Partial("Form", Model)
+    </fieldset>
+}
+<script type="text/javascript" src="~/Scripts/Tesouraria/CaixaScript.js"></script>

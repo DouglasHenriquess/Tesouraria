@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesouraria.Infraestrutura.Dados", "Tesouraria.Infraestrutura.Dados\Tesouraria.Infraestrutura.Dados.csproj", "{17B7CE05-6848-423E-8E5C-F8C620FB8DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesouraria.Infraestrutura.InjecaoDependencia", "Tesouraria.Infraestrutura.InjecaoDependencia\Tesouraria.Infraestrutura.InjecaoDependencia.csproj", "{D112FE56-19BC-4B32-A172-0A89FBB1E1EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesouraria.Dominio", "Tesouraria.Dominio\Tesouraria.Dominio.csproj", "{C88E2C0D-1BBF-4A65-B563-82E09D428050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tesouraria.Apresentacao", "Tesouraria.Apresentacao\Tesouraria.Apresentacao.csproj", "{405FF9F4-8F7B-4C6F-8EC5-F2B2432DAA0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17B7CE05-6848-423E-8E5C-F8C620FB8DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B7CE05-6848-423E-8E5C-F8C620FB8DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B7CE05-6848-423E-8E5C-F8C620FB8DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B7CE05-6848-423E-8E5C-F8C620FB8DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D112FE56-19BC-4B32-A172-0A89FBB1E1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D112FE56-19BC-4B32-A172-0A89FBB1E1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D112FE56-19BC-4B32-A172-0A89FBB1E1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D112FE56-19BC-4B32-A172-0A89FBB1E1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88E2C0D-1BBF-4A65-B563-82E09D428050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88E2C0D-1BBF-4A65-B563-82E09D428050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88E2C0D-1BBF-4A65-B563-82E09D428050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88E2C0D-1BBF-4A65-B563-82E09D428050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405FF9F4-8F7B-4C6F-8EC5-F2B2432DAA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405FF9F4-8F7B-4C6F-8EC5-F2B2432DAA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405FF9F4-8F7B-4C6F-8EC5-F2B2432DAA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405FF9F4-8F7B-4C6F-8EC5-F2B2432DAA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

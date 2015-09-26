@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Tesouraria.Apresentacao.ViewModels.PessoaViewModel>
+@{
+    ViewBag.Title = "Cadastro de Pessoas";
+}
+<h2 class="portlet-title">
+    <i class="fa fa-users">&nbsp;Cadastro de Pessoas</i>
+    <button type="button" class="btn btn-primary pull-right" id="btNovo">
+        <span class="fa fa-file"></span><span>&nbsp; Novo Registro</span>
+    </button>
+</h2>
+<hr />
+<br />
+@using (Html.BeginForm("Index", "Pessoa", FormMethod.Post, new { id = "form" }))
+{
+    <fieldset>
+        <div class="panel" style="background-color: #EEEEEE">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <label>
+                            Pesquisa</label>
+                        @Html.TextBox("pesquisa", null, new { @class = "form-control input-sm" })
+                    </div>
+                    <div class="col-sm-1 pull-right">
+                        <br />
+                        <button type="submit" class="btn btn-primary pull-right" id="btPesquisar">
+                            <span class="fa fa-search"></span><span>&nbsp;Buscar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+@if (Model != null)
+{
+    <div class="container" style="margin-bottom: 50px;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-sm-2">
+                        Código
+                    </th>
+                    <th class="col-sm-4">
+                        @Html.DisplayNameFor(x => x.Nome)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayNameFor(x => x.Lugar)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayNameFor(x => x.Telefone)
+                    </th>
+                    <th class="col-sm-2 text-center">
+                        Editar
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(x => item.PessoaId)
+                        </td>
+                        <td class="col-sm-4">
+                            @Html.DisplayFor(x => item.Nome)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(x => item.Lugar)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(x => item.Telefone)
+                        </td>
+                        <td class="col-sm-2 text-center">
+                            <a href="@Url.Action("Edit", "Pessoa", new { pessoaId = item.PessoaId })" class="btn btn-primary">
+                                <i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<script type="text/javascript" src="~/Scripts/Tesouraria/PessoaScript.js"></script>

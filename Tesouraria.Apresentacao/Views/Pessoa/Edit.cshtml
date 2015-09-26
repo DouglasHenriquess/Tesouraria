@@ -1,0 +1,23 @@
+﻿@model Tesouraria.Apresentacao.ViewModels.PessoaViewModel
+@{
+    ViewBag.Title = "Cadastro de Pessoas";
+}
+@using (Html.BeginForm("Edit", "Pessoa", FormMethod.Post, new { id = "form" }))
+{
+    <h2 class="portlet-title">
+        <i class="fa fa-users"></i>&nbsp;Editar Registro
+        <button type="button" class="btn btn-primary pull-right" id="btSalvar">
+            <span class="fa fa-save"></span><span>&nbsp;Salvar</span>
+        </button>
+        <button type="button" class="btn pull-right" style="margin-right: 10px" id="btVoltar">
+            <span class="fa fa-arrow-circle-left"></span><span>&nbsp;Voltar</span>
+        </button>
+    </h2>
+    <hr />
+    <br />
+    <fieldset>
+        @Html.Partial("Form", Model)
+        @Html.HiddenFor(x => x.PessoaId)
+    </fieldset>
+}
+<script type="text/javascript" src="~/Scripts/Tesouraria/PessoaScript.js"></script>
