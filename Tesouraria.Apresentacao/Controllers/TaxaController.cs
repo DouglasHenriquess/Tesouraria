@@ -25,8 +25,8 @@ namespace Tesouraria.Apresentacao.Controllers
             var _taxaVM = Mapper.Map<IList<Taxa>, IList<TaxaViewModel>>(_taxaServicos.GetAll()
                 .Where(x =>
                     x.TaxaId.ToString().Contains(pesquisa) ||
-                    x.Nome.Contains(pesquisa) ||
-                    x.Valor.ToString().Contains(pesquisa))
+                    (x.Nome != null && x.Nome.Contains(pesquisa)) ||
+                    (x.Valor != null && x.Valor.ToString().Contains(pesquisa)))
                     .ToList());
 
             return View(_taxaVM);

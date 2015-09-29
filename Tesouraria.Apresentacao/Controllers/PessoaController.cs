@@ -25,9 +25,9 @@ namespace Tesouraria.Apresentacao.Controllers
             var _pessoaVM = Mapper.Map<IList<Pessoa>, IList<PessoaViewModel>>(_pessoaServicos.GetAll()
                 .Where(x =>
                     x.PessoaId.ToString().Contains(pesquisa) ||
-                    x.Nome.Contains(pesquisa) ||
-                    x.Lugar.Contains(pesquisa) ||
-                    x.Telefone.Contains(pesquisa))
+                    (x.Nome != null && x.Nome.Contains(pesquisa)) ||
+                    (x.Lugar != null && x.Lugar.Contains(pesquisa)) ||
+                    (x.Telefone != null && x.Telefone.Contains(pesquisa)))
                     .OrderBy(x => x.Nome)
                     .ToList());
 
@@ -40,12 +40,12 @@ namespace Tesouraria.Apresentacao.Controllers
         {
             ViewBag.Lugares = new SelectList(new string[]
             {
-                "Selecione",
-                "Franqueado",
-                "Quadro de Sócio", 
-                "Corpo Instrutivo", 
-                "Corpo do Conselho", 
-                "Quadro de Mestre"
+                "SELECIONE",
+                "NÃO SÓCIO",
+                "QUADRO DE SÓCIO", 
+                "CORPO INSTRUTIVO", 
+                "CORPO DO CONSELHO", 
+                "QUADRO DE MESTRE"
             });
 
             return View();
@@ -70,12 +70,12 @@ namespace Tesouraria.Apresentacao.Controllers
         {
             ViewBag.Lugares = new SelectList(new string[]
             {
-                "Selecione",
-                "Franqueado",
-                "Quadro de Sócio", 
-                "Corpo Instrutivo", 
-                "Corpo do Conselho", 
-                "Quadro de Mestre"
+                "SELECIONE",
+                "NÃO SÓCIO",
+                "QUADRO DE SÓCIO", 
+                "CORPO INSTRUTIVO", 
+                "CORPO DO CONSELHO", 
+                "QUADRO DE MESTRE"
             });
 
             var _pessoa = _pessoaServicos.GetById(pessoaId);

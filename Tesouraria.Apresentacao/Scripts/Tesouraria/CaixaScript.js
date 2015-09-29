@@ -1,6 +1,6 @@
 ﻿$(function () {
     RegistraEventos();
-    SelecionaTodasAsTaxas();
+    //SelecionaTodasAsTaxas();
 });
 
 function RegistraEventos() {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -54,7 +53,6 @@ namespace Tesouraria.Apresentacao.Controllers
             if (caixaViewModel.PessoasVM.Where(x => x.Selecionado).Count() > 1)
             {
                 return Content("<script language='javascript' type='text/javascript'>alert('Selecione somente uma pessoa para o pagamento!'); window.location.href = '/Caixa/Index';</script>");
-                RedirectToAction("Index");
             }
             else
             {
