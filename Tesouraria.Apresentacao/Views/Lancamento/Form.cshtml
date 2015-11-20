@@ -1,0 +1,71 @@
+﻿@model Tesouraria.Apresentacao.ViewModels.LancamentoViewModel
+<div class="container">
+    <form class="form-horizontal" role="form">
+    <div class="col-sm-12">
+        <div class="col-sm-8">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.Label("Data Início", new { @class = "control-label" })
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group date">
+                        <input type="text" class="form-control"/>
+                        <span class="input-group-addon" id="datePickerInicio">
+                        <i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.Label("Data Fim", new { @class = "control-label" })
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group date">
+                        <input type="text" class="form-control" />
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="btn-group-vertical pull-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTaxas"
+                    id="btModalTaxas">
+                    <span class="fa fa-usd"></span><span>&nbsp;Vincular Taxas</span>
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoas"
+                    id="btModalPessoas">
+                    <span class="fa fa-users"></span><span>&nbsp;Vincular Pessoas</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <br />
+        <div class="col-sm-6">
+            <div class="row form-group">
+                <div class="col-sm-12" style="margin-bottom: 50px;">
+                    <table class="table table-striped table-bordered" id="tableTaxasSelecionadas">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row form-group">
+                <div class="col-sm-12" style="margin-bottom: 50px;">
+                    <table class="table table-striped table-bordered" id="tablePessoasSelecionadas">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

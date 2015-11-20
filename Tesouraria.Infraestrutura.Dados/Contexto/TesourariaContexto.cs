@@ -11,6 +11,7 @@ namespace Tesouraria.Infraestrutura.Dados.Contexto
             : base("Tesouraria")
         {
             Configuration.ProxyCreationEnabled = true;
+            Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<Pessoa> Pessoas { get; set; }

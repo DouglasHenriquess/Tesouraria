@@ -7,7 +7,6 @@ function RegistraEventos() {
     onVoltar();
     onNovo();
     onPesquisar();
-    onKeyPressValor();
 }
 
 function onSalvar() {

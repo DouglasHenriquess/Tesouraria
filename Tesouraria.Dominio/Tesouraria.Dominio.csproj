@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Caixa.cs" />
+    <Compile Include="Entidades\Lancamento.cs" />
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Taxa.cs" />
     <Compile Include="Interfaces\Repositorios\ICaixaRepositorio.cs" />

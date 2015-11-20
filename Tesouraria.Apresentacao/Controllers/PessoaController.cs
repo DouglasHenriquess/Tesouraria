@@ -57,7 +57,7 @@ namespace Tesouraria.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 var _pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
-                _pessoaServicos.AddOrUpdate(_pessoa);
+                _pessoaServicos.Add(_pessoa);
                 return RedirectToAction("Index");
             }
 

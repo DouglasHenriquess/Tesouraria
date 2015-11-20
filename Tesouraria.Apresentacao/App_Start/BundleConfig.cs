@@ -40,9 +40,12 @@ namespace Tesouraria.Apresentacao
 
             //Bootstrap
             bundles.Add(new StyleBundle("~/Bootstrap/css").Include(
-                "~/Content/bootstrap/bootstrap.css"));
+                "~/Content/bootstrap/bootstrap.css",
+                "~/Content/bootstrap/bootstrap-datepicker3.css"));
             bundles.Add(new ScriptBundle("~/Bootstrap/js").Include(
-                "~/Scripts/bootstrap.js"));
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/bootstrap-datepicker.js",
+                "~/Scripts/bootstrap-datepicker.pt-BR.min.js"));
 
             BundleTable.EnableOptimizations = true;
         }

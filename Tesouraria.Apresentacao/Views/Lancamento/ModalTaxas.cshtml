@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="modalTaxas" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Vincular Taxas
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group input-group">
+                    @Html.TextBox("txtPesquisaTaxas", null, new { @class = "form-control", @style = "text-transform: uppercase" })
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="btPesquisaTaxas">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btSelecionaTaxas">
+                            <i class="fa fa-check-square-o"></i>
+                        </button>
+                    </span>
+                </div>
+                <div>
+                    <table class="table table-striped table-bordered" id="tableTaxasPesquisa">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
