@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using Tesouraria.Dominio.Entidades;
 
 namespace Tesouraria.Apresentacao.ViewModels
 {
@@ -7,8 +7,10 @@ namespace Tesouraria.Apresentacao.ViewModels
     {
         public int LancamentoId { get; set; }
         public decimal Valor { get; set; }
-        public bool Pago { get; set; }
         public DateTime DataVencimento { get; set; }
-        public IList<PessoaViewModel> PessoasVM { get; set; }
+        public bool Pago { get; set; }
+        public bool Cancelado { get; set; }
+        public Pessoa Pessoa { get; set; }
+        public Taxa Taxa { get; set; }
     }
 }

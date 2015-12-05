@@ -8,5 +8,6 @@ namespace Tesouraria.Dominio.Entidades
         public decimal Valor { get; set; }
         public Pessoa Pessoa { get; set; }
         public IList<Taxa> Taxas { get; set; }
+        public IList<Lancamento> Lancamentos { get; set; }
     }
 }

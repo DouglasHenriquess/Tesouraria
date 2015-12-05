@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using Tesouraria.Apresentacao.ViewModels;
+using Tesouraria.Dominio.Entidades;
 using Tesouraria.Dominio.Interfaces.Servicos;
 using Tesouraria.Dominio.Servicos.InjecaoDependencia;
-using Tesouraria.Apresentacao.ViewModels;
-using AutoMapper;
-using Tesouraria.Dominio.Entidades;
 
 namespace Tesouraria.Apresentacao.Controllers
 {
@@ -15,39 +14,111 @@ namespace Tesouraria.Apresentacao.Controllers
     {
         private readonly IPessoaServicos _pessoaServicos = ResolvedorDependencias.Resolve<IPessoaServicos>();
         private readonly ITaxaServicos _taxaServicos = ResolvedorDependencias.Resolve<ITaxaServicos>();
+        private readonly ILancamentoServicos _lancamentoServicos = ResolvedorDependencias.Resolve<ILancamentoServicos>();
 
+        #region INDEX
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region CREATE
         public ActionResult Create()
-        {           
+        {
             return View();
         }
-
         [HttpPost]
+        public ActionResult Create(DateTime dataInicio, DateTime dataFim, List<Taxa> taxas, List<Pessoa> pessoas)
+        {
+            try
+            {
+                List<LancamentoViewModel> lancamentosViewModel = new List<LancamentoViewModel>();
+                for (DateTime data = dataInicio; data <= dataFim; data = data.AddMonths(1))
+                {
+                    foreach (var taxa in taxas)
+                    {
+                        foreach (var pessoa in pessoas)
+                        {
+                            lancamentosViewModel.Add(new LancamentoViewModel()
+                            {
+                                DataVencimento = data,
+                                Valor = taxa.Valor,
+                                Pessoa = pessoa,
+                                Taxa = taxa
+                            });
+                        }
+                    }
+                }
+                List<Lancamento> lancamentos = new List<Lancamento>(
+                    Mapper.Map<List<LancamentoViewModel>, List<Lancamento>>(lancamentosViewModel));
+                _lancamentoServicos.AddLancamentos(lancamentos);
+                
+                return Json(new
+                {
+                    Success = true
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    Success = false
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            return View();
+        }
+        #endregion
+
+        #region MÉTODOS
         public JsonResult PesquisaPessoas(string pesquisa)
         {
-            var _pessoas = _pessoaServicos.GetAll()
-                .Where(x =>
-                    x.Nome != null && x.Nome.Contains(pesquisa) ||
-                    x.Lugar != null && x.Lugar.Contains(pesquisa))
-                .ToList();
+            try
+            {
+                var pessoas = _pessoaServicos.GetAll()
+                    .Where(x =>
+                        x.Nome != null && x.Nome.Contains(pesquisa) ||
+                        x.Lugar != null && x.Lugar.Contains(pesquisa))
+                    .ToList();
 
-            return Json(_pessoas);
+                return Json(new
+                {
+                    Success = true,
+                    Pessoas = pessoas
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    Success = false
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
         }
-
-        [HttpPost]
         public JsonResult PesquisaTaxas(string pesquisa)
         {
-            var _taxas = _taxaServicos.GetAll()
-                .Where(x =>
-                    x.Nome != null && x.Nome.Contains(pesquisa) ||
-                    x.Valor != null && x.Valor.ToString().Contains(pesquisa))
-                .ToList();
+            try
+            {
+                var taxas = _taxaServicos.GetAll()
+                    .Where(x =>
+                        x.Nome != null && x.Nome.Contains(pesquisa) ||
+                        x.Valor != null && x.Valor.ToString().Contains(pesquisa))
+                    .ToList();
 
-            return Json(_taxas);
+                return Json(new
+                {
+                    Success = true,
+                    Taxas = taxas
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    Success = false
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
         }
+        #endregion
     }
 }

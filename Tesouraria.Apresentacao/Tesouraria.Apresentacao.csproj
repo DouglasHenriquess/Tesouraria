@@ -241,7 +241,9 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\Tesouraria\CaixaScript.js" />
-    <Content Include="Scripts\Tesouraria\LancamentoScript.js" />
+    <Content Include="Scripts\Tesouraria\Lancamento\Lancamento.js" />
+    <Content Include="Scripts\Tesouraria\Lancamento\VinculoPessoa.js" />
+    <Content Include="Scripts\Tesouraria\Lancamento\VinculoTaxa.js" />
     <Content Include="Scripts\Tesouraria\PessoaScript.js" />
     <Content Include="Scripts\Tesouraria\TaxaScript.js" />
     <Content Include="Scripts\_references.js" />

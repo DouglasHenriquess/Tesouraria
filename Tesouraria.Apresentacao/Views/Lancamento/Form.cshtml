@@ -1,29 +1,31 @@
 ﻿@model Tesouraria.Apresentacao.ViewModels.LancamentoViewModel
 <div class="container">
-    <form class="form-horizontal" role="form">
     <div class="col-sm-12">
         <div class="col-sm-8">
             <div class="row form-group">
-                <div class="col-sm-2">
-                    @Html.Label("Data Início", new { @class = "control-label" })
+                <div class="col-sm-1">
+                    @Html.Label("De", new { @class = "control-label" })
                 </div>
-                <div class="col-sm-6">
-                    <div class="input-group date">
-                        <input type="text" class="form-control"/>
-                        <span class="input-group-addon" id="datePickerInicio">
-                        <i class="fa fa-calendar"></i></span>
+                <div class="col-sm-3">
+                    <div class="input-group date" id="inputGroupInicio">
+                        <input type="text" class="form-control" id="datePickerInicio" readonly="true" />
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
+                </div>
+                <div class="col-sm-4">
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-sm-2">
-                    @Html.Label("Data Fim", new { @class = "control-label" })
+                <div class="col-sm-1">
+                    @Html.Label("Até", new { @class = "control-label" })
                 </div>
-                <div class="col-sm-6">
-                    <div class="input-group date">
-                        <input type="text" class="form-control" />
+                <div class="col-sm-3">
+                    <div class="input-group date" id="inputGroupFim">
+                        <input type="text" class="form-control" id="datePickerFim" readonly="true" />
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
+                </div>
+                <div class="col-sm-4">
                 </div>
             </div>
         </div>
@@ -67,5 +69,4 @@
             </div>
         </div>
     </div>
-    </form>
 </div>

@@ -14,11 +14,9 @@ namespace Tesouraria.Apresentacao
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
-
             //Modernizr
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
             //Css
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/css/site.css"));
@@ -37,7 +35,6 @@ namespace Tesouraria.Apresentacao
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
-
             //Bootstrap
             bundles.Add(new StyleBundle("~/Bootstrap/css").Include(
                 "~/Content/bootstrap/bootstrap.css",

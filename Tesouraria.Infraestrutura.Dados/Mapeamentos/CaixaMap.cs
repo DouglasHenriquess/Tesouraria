@@ -19,13 +19,13 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
                 .WithMany()
                 .Map(x => x.MapKey("PessoaId"));
 
-            HasMany(x => x.Taxas)
+            HasMany(x => x.Lancamentos)
                 .WithMany()
                 .Map(x =>
                     {
-                        x.ToTable("TaxaToCaixa");
+                        x.ToTable("LancamentoToCaixa");
                         x.MapLeftKey("CaixaId");
-                        x.MapRightKey("TaxaId");
+                        x.MapRightKey("LancamentoId");
                     });
         }
     }

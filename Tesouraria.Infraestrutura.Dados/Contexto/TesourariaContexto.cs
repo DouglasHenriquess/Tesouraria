@@ -16,6 +16,7 @@ namespace Tesouraria.Infraestrutura.Dados.Contexto
 
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Taxa> Taxas { get; set; }
+        public DbSet<Lancamento> Lancamentos { get; set; }
         public DbSet<Caixa> Caixas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,6 +37,7 @@ namespace Tesouraria.Infraestrutura.Dados.Contexto
 
             modelBuilder.Configurations.Add(new PessoaMap());
             modelBuilder.Configurations.Add(new TaxaMap());
+            modelBuilder.Configurations.Add(new LancamentoMap());
             modelBuilder.Configurations.Add(new CaixaMap());
         }
     }

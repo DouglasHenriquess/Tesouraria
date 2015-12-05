@@ -45,10 +45,12 @@
     <Compile Include="Entidades\Pessoa.cs" />
     <Compile Include="Entidades\Taxa.cs" />
     <Compile Include="Interfaces\Repositorios\ICaixaRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\ILancamentoRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IPessoaRepositorio.cs" />
     <Compile Include="Interfaces\Repositorios\IRepositorioBase.cs" />
     <Compile Include="Interfaces\Repositorios\ITaxaRepositorio.cs" />
     <Compile Include="Interfaces\Servicos\ICaixaServicos.cs" />
+    <Compile Include="Interfaces\Servicos\ILancamentoServicos.cs" />
     <Compile Include="Interfaces\Servicos\InjecaoDependencia\IResolvedorDependencias.cs" />
     <Compile Include="Interfaces\Servicos\IPessoaServicos.cs" />
     <Compile Include="Interfaces\Servicos\IServicosBase.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\CaixaServicos.cs" />
     <Compile Include="Servicos\InjecaoDependencia\ResolvedorDependencias.cs" />
+    <Compile Include="Servicos\LancamentoServicos.cs" />
     <Compile Include="Servicos\PessoaServicos.cs" />
     <Compile Include="Servicos\ServicosBase.cs" />
     <Compile Include="Servicos\TaxaServicos.cs" />
