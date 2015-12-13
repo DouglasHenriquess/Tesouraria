@@ -1,24 +1,20 @@
 ﻿using System.Collections.Generic;
 using Tesouraria.Dominio.Entidades;
 using Tesouraria.Dominio.Interfaces.Repositorios;
-using Tesouraria.Infraestrutura.Dados.Contexto;
 
 namespace Tesouraria.Infraestrutura.Dados.Repositorios
 {
     public class LancamentoRepositorio : RepositorioBase<Lancamento>, ILancamentoRepositorio
     {
-        public void AddLancamentos(List<Lancamento> objs)
+        public void CadastraLancamentos(List<Lancamento> lancamentos)
         {
-            using (var context = new TesourariaContexto())
+            foreach (var lancamento in lancamentos)
             {
-                foreach (var obj in objs)
-                {
-                    _context.Set<Lancamento>().Add(obj);
-                    _context.Set<Pessoa>().Attach(obj.Pessoa);
-                    _context.Set<Taxa>().Attach(obj.Taxa);
-                }
-                _context.SaveChanges();
+                _context.Set<Lancamento>().Add(lancamento);
+                _context.Set<Pessoa>().Attach(lancamento.Pessoa);
+                _context.Set<Taxa>().Attach(lancamento.Taxa);
             }
+            GravaNoBancoDeDados();
         }
     }
 }

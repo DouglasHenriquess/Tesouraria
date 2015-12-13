@@ -5,6 +5,6 @@ namespace Tesouraria.Dominio.Interfaces.Servicos
 {
     public interface ILancamentoServicos : IServicosBase<Lancamento>
     {
-        void AddLancamentos(List<Lancamento> lancamentos);
+        void CadastraLancamentos(List<Lancamento> lancamentos);
     }
 }

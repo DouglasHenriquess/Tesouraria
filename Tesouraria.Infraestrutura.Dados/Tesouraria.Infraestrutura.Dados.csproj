@@ -62,7 +62,6 @@
     <Compile Include="Repositorios\RepositorioBase.cs" />
     <Compile Include="Repositorios\TaxaRepositorio.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Tesouraria.Dominio\Tesouraria.Dominio.csproj">
       <Project>{C88E2C0D-1BBF-4A65-B563-82E09D428050}</Project>

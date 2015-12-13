@@ -19,7 +19,6 @@ namespace Tesouraria.Apresentacao.AutoMapper
             Mapper.CreateMap<Pessoa, PessoaViewModel>();
             Mapper.CreateMap<Taxa, TaxaViewModel>();
             Mapper.CreateMap<Lancamento, LancamentoViewModel>();
-            Mapper.CreateMap<Caixa, CaixaViewModel>();
         }
     }
 }

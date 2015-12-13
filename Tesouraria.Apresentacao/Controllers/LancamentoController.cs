@@ -52,8 +52,8 @@ namespace Tesouraria.Apresentacao.Controllers
                 }
                 List<Lancamento> lancamentos = new List<Lancamento>(
                     Mapper.Map<List<LancamentoViewModel>, List<Lancamento>>(lancamentosViewModel));
-                _lancamentoServicos.AddLancamentos(lancamentos);
-                
+                _lancamentoServicos.CadastraLancamentos(lancamentos);
+
                 return Json(new
                 {
                     Success = true
@@ -75,7 +75,7 @@ namespace Tesouraria.Apresentacao.Controllers
         {
             try
             {
-                var pessoas = _pessoaServicos.GetAll()
+                var pessoas = _pessoaServicos.ObtemTodos()
                     .Where(x =>
                         x.Nome != null && x.Nome.Contains(pesquisa) ||
                         x.Lugar != null && x.Lugar.Contains(pesquisa))
@@ -99,7 +99,7 @@ namespace Tesouraria.Apresentacao.Controllers
         {
             try
             {
-                var taxas = _taxaServicos.GetAll()
+                var taxas = _taxaServicos.ObtemTodos()
                     .Where(x =>
                         x.Nome != null && x.Nome.Contains(pesquisa) ||
                         x.Valor != null && x.Valor.ToString().Contains(pesquisa))

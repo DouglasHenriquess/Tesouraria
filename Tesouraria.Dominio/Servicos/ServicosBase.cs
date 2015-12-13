@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Tesouraria.Dominio.Interfaces.Repositorios;
 using Tesouraria.Dominio.Interfaces.Servicos;
 
 namespace Tesouraria.Dominio.Servicos
 {
-    public class ServicosBase<T> : IDisposable, IServicosBase<T> where T : class
+    public class ServicosBase<T> : IServicosBase<T> where T : class
     {
         private readonly IRepositorioBase<T> _repositorioBase;
 
@@ -18,39 +17,24 @@ namespace Tesouraria.Dominio.Servicos
         {
         }
 
-        public void Add(T obj)
+        public void Salva(T obj)
         {
-            _repositorioBase.Add(obj);
+            _repositorioBase.Salva(obj);
         }
 
-        public void Update(T obj)
+        public void Apaga(T obj)
         {
-            _repositorioBase.Update(obj);
+            _repositorioBase.Apaga(obj);
         }
 
-        public void AddOrUpdate(T obj)
+        public T ObtemPorId(int id)
         {
-            _repositorioBase.AddOrUpdate(obj);
+            return _repositorioBase.ObtemPorId(id);
         }
 
-        public void Remove(T obj)
+        public IList<T> ObtemTodos()
         {
-            _repositorioBase.Remove(obj);
-        }
-
-        public void Dispose()
-        {
-            _repositorioBase.Dispose();
-        }
-
-        public T GetById(int id)
-        {
-            return _repositorioBase.GetById(id);
-        }
-
-        public IList<T> GetAll()
-        {
-            return _repositorioBase.GetAll();
+            return _repositorioBase.ObtemTodos();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Tesouraria.Apresentacao.Controllers
         [HttpPost]
         public ActionResult Index(string pesquisa)
         {
-            var _pessoaVM = Mapper.Map<IList<Pessoa>, IList<PessoaViewModel>>(_pessoaServicos.GetAll()
+            var _pessoaVM = Mapper.Map<IList<Pessoa>, IList<PessoaViewModel>>(_pessoaServicos.ObtemTodos()
                 .Where(x =>
                     x.PessoaId.ToString().Contains(pesquisa) ||
                     (x.Nome != null && x.Nome.Contains(pesquisa)) ||
@@ -57,7 +57,7 @@ namespace Tesouraria.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 var _pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
-                _pessoaServicos.Add(_pessoa);
+                _pessoaServicos.Salva(_pessoa);
                 return RedirectToAction("Index");
             }
 
@@ -78,7 +78,7 @@ namespace Tesouraria.Apresentacao.Controllers
                 "QUADRO DE MESTRE"
             });
 
-            var _pessoa = _pessoaServicos.GetById(pessoaId);
+            var _pessoa = _pessoaServicos.ObtemPorId(pessoaId);
             var _pessoaVM = Mapper.Map<Pessoa, PessoaViewModel>(_pessoa);
 
             return View(_pessoaVM);
@@ -90,7 +90,7 @@ namespace Tesouraria.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 var _pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
-                _pessoaServicos.AddOrUpdate(_pessoa);
+                _pessoaServicos.Salva(_pessoa);
                 return RedirectToAction("Index");
             }
 

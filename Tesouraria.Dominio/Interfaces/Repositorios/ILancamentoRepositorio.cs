@@ -5,6 +5,6 @@ namespace Tesouraria.Dominio.Interfaces.Repositorios
 {
     public interface ILancamentoRepositorio : IRepositorioBase<Lancamento>
     {
-        void AddLancamentos(List<Lancamento> lancamentos);
+        void CadastraLancamentos(List<Lancamento> lancamentos);
     }
 }

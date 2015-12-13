@@ -22,7 +22,7 @@ namespace Tesouraria.Apresentacao.Controllers
         [HttpPost]
         public ActionResult Index(string pesquisa)
         {
-            var _taxaVM = Mapper.Map<IList<Taxa>, IList<TaxaViewModel>>(_taxaServicos.GetAll()
+            var _taxaVM = Mapper.Map<IList<Taxa>, IList<TaxaViewModel>>(_taxaServicos.ObtemTodos()
                 .Where(x =>
                     x.TaxaId.ToString().Contains(pesquisa) ||
                     (x.Nome != null && x.Nome.Contains(pesquisa)) ||
@@ -45,7 +45,7 @@ namespace Tesouraria.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 var _taxa = Mapper.Map<TaxaViewModel, Taxa>(taxaViewModel);
-                _taxaServicos.AddOrUpdate(_taxa);
+                _taxaServicos.Salva(_taxa);
                 return RedirectToAction("Index");
             }
 
@@ -56,7 +56,7 @@ namespace Tesouraria.Apresentacao.Controllers
         #region Edit
         public ActionResult Edit(int taxaId)
         {
-            var _taxa = _taxaServicos.GetById(taxaId);
+            var _taxa = _taxaServicos.ObtemPorId(taxaId);
             var _taxaVM = Mapper.Map<Taxa, TaxaViewModel>(_taxa);
 
             return View(_taxaVM);
@@ -68,7 +68,7 @@ namespace Tesouraria.Apresentacao.Controllers
             if (ModelState.IsValid)
             {
                 var _taxa = Mapper.Map<TaxaViewModel, Taxa>(taxaViewModel);
-                _taxaServicos.AddOrUpdate(_taxa);
+                _taxaServicos.Salva(_taxa);
                 return RedirectToAction("Index");
             }
 

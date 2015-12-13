@@ -64,6 +64,7 @@ function cadastraLancamentos() {
             else {
                 alert("Erro ao cadastrar lançamentos.");
             }
+            window.location.href = "/";
         }
     });
 }

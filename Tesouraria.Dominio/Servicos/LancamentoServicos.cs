@@ -15,9 +15,9 @@ namespace Tesouraria.Dominio.Servicos
             _lancamentoRepositorio = lancamentoRepositorio;
         }
 
-        public void AddLancamentos(List<Lancamento> lancamentos)
+        public void CadastraLancamentos(List<Lancamento> lancamentos)
         {
-            _lancamentoRepositorio.AddLancamentos(lancamentos);
+            _lancamentoRepositorio.CadastraLancamentos(lancamentos);
         }
     }
 }

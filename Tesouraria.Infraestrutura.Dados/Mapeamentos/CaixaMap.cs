@@ -15,10 +15,6 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
             Property(x => x.Valor)
                 .IsRequired();
 
-            HasOptional(x => x.Pessoa)
-                .WithMany()
-                .Map(x => x.MapKey("PessoaId"));
-
             HasMany(x => x.Lancamentos)
                 .WithMany()
                 .Map(x =>
