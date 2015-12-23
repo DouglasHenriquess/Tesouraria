@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Tesouraria.Dominio.Entidades;
 using Tesouraria.Dominio.Interfaces.Repositorios;
 
@@ -15,6 +16,14 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
                 _context.Set<Taxa>().Attach(lancamento.Taxa);
             }
             GravaNoBancoDeDados();
+        }
+
+        public override IList<Lancamento> ObtemTodos()
+        {
+            return _context.Lancamentos
+                .Include("Pessoa")
+                .Include("Taxa")
+                .ToList();
         }
     }
 }

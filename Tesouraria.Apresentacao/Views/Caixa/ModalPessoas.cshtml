@@ -1,0 +1,29 @@
+﻿<div class="modal fade" id="modalPessoas" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Selecionar Pessoa
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group input-group">
+                    @Html.TextBox("txtPesquisa", null, new { @class = "form-control", @style = "text-transform: uppercase" })
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="btPesquisa">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <div>
+                    <table class="table table-striped table-bordered" id="tablePesquisa">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

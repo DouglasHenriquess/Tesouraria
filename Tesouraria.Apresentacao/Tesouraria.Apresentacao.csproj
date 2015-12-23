@@ -144,6 +144,7 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DominioParaViewModel.cs" />
     <Compile Include="AutoMapper\ViewModelParaDominio.cs" />
+    <Compile Include="Controllers\CaixaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LancamentoController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
@@ -152,6 +153,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CaixaViewModel.cs" />
     <Compile Include="ViewModels\LancamentoViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\TaxaViewModel.cs" />
@@ -238,6 +240,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\Tesouraria\Caixa\Caixa.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\Lancamento.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\VinculoPessoa.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\VinculoTaxa.js" />
@@ -294,6 +297,9 @@
     <Content Include="Views\Lancamento\Form.cshtml" />
     <Content Include="Views\Lancamento\ModalPessoas.cshtml" />
     <Content Include="Views\Lancamento\ModalTaxas.cshtml" />
+    <Content Include="Views\Caixa\Create.cshtml" />
+    <Content Include="Views\Caixa\Form.cshtml" />
+    <Content Include="Views\Caixa\ModalPessoas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tesouraria.Dominio\Tesouraria.Dominio.csproj">
