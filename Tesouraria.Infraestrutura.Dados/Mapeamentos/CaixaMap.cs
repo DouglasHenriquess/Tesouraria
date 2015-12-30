@@ -12,8 +12,13 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
                 .Property(x => x.CaixaId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            Property(x => x.Valor)
-                .IsRequired();
+            Property(x => x.Valor);
+
+            Property(x => x.DataPagamento);
+
+            HasOptional(x => x.Pessoa)
+                .WithMany()
+                .Map(x => x.MapKey("PessoaId"));
 
             HasMany(x => x.Lancamentos)
                 .WithMany()

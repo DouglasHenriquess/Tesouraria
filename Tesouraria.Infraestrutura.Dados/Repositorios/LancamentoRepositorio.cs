@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Tesouraria.Dominio.Entidades;
 using Tesouraria.Dominio.Interfaces.Repositorios;
@@ -11,19 +12,18 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
         {
             foreach (var lancamento in lancamentos)
             {
-                _context.Set<Lancamento>().Add(lancamento);
-                _context.Set<Pessoa>().Attach(lancamento.Pessoa);
-                _context.Set<Taxa>().Attach(lancamento.Taxa);
+                lancamento.Pessoa = _context.Pessoas.Find(lancamento.Pessoa.PessoaId);
+                lancamento.Taxa = _context.Taxas.Find(lancamento.Taxa.TaxaId);
+                _context.Entry(lancamento).State = EntityState.Added;
             }
             GravaNoBancoDeDados();
         }
 
         public override IList<Lancamento> ObtemTodos()
         {
-            return _context.Lancamentos
-                .Include("Pessoa")
-                .Include("Taxa")
-                .ToList();
+            AtualizaContexto();
+            return _context.Set<Lancamento>().Include("Pessoa").Include("Taxa").ToList();
         }
+        public override 
     }
 }

@@ -18,8 +18,6 @@ namespace Tesouraria.Infraestrutura.Dados.Mapeamentos
 
             Property(x => x.Pago);
 
-            Property(x => x.Cancelado);
-
             HasOptional(x => x.Pessoa)
                 .WithMany()
                 .Map(x => x.MapKey("PessoaId"));

@@ -12,9 +12,9 @@ function onPesquisaPessoas() {
         pesquisaPessoas();
     });
 }
-function onSelecionaTodasTaxas() {
-    $("#btSelecionaTodasTaxas").click(function () {
-        selecionaTodasTaxas();
+function onSelecionaTodosLancamentos() {
+    $("#btSelecionaTodosLancamentos").click(function () {
+        selecionaTodosLancamentos();
     });
 }
 function onObtemLancamentosFuturos() {
@@ -22,15 +22,27 @@ function onObtemLancamentosFuturos() {
         obtemLancamentosFuturos();
     });
 }
+function onVolta() {
+    $("#btVolta").click(function () {
+        window.location.href = "/";
+    });
+}
+function onSalva() {
+    $("#btSalva").click(function () {
+        cadastra();
+    });
+}
 
 function registraEventos() {
     onModalPessoas();
     onPesquisaPessoas();
-    onSelecionaTodasTaxas();
+    onSelecionaTodosLancamentos();
     onObtemLancamentosFuturos();
+    onVolta();
+    onSalva();
 }
 function configuraControles() {
-    $("#btSelecionaTodasTaxas").hide();
+    $("#btSelecionaTodosLancamentos").hide();
     $("#btLancamentosFuturos").hide();
 }
 function iniciaModalPessoas() {
@@ -38,9 +50,10 @@ function iniciaModalPessoas() {
     $("#tablePesquisa > tbody").empty();
     $("#tableLancamentos > thead").empty();
     $("#tableLancamentos > tbody").empty();
-    $("#btSelecionaTodasTaxas").removeClass("btn-success");
-    $("#btSelecionaTodasTaxas").addClass("btn-primary");
-    $("#btSelecionaTodasTaxas").hide();
+    $("#btSelecionaTodosLancamentos").removeClass("btn-success");
+    $("#btSelecionaTodosLancamentos").addClass("btn-primary");
+    $("#btSelecionaTodosLancamentos").hide();
+    $("#btLancamentosFuturos").hide();
     $("#txtPesquisa").val("");
     $("#txtCodigo").val("");
     $("#txtNome").val("");
@@ -119,9 +132,9 @@ function obtemLancamentos(pessoaId) {
 }
 function obtemLancamentosFuturos() {
     $.ajax({
-        type: "GET/",
+        type: "GET",
         url: "/Caixa/ObtemLancamentosFuturos/",
-        data:  JSON.stringify({ pessoaId: parseInt($("#txtCodigo").val()) }),
+        data: { pessoaId: $("#txtCodigo").val() },
         cache: false,
         contentType: "application/json;charset=utf-8",
         success: function (retorno) {
@@ -137,18 +150,23 @@ function obtemLancamentosFuturos() {
 function constroiTabelaLancamentos(lancamentos) {
     $("#tableLancamentos > thead").empty();
     $("#tableLancamentos > tbody").empty();
+    $("#btLancamentosFuturos").show();
     if (lancamentos.length > 0) {
-        $("#btSelecionaTodasTaxas").show();
-        $("#btLancamentosFuturos").show();
+        $("#txtValor").val("");
+        $("#btSelecionaTodosLancamentos").removeClass("btn-success");
+        $("#btSelecionaTodosLancamentos").addClass("btn-primary");
+        $("#btSelecionaTodosLancamentos").show();
         var cabecalho = $("<tr>");
-        cabecalho.append("<th>Taxa</th>");
-        cabecalho.append("<th>Vencimento</th>");
-        cabecalho.append("<th>Valor</th>");
-        cabecalho.append("<th>Pagar</th>");
+        cabecalho.append("<th hidden='hidden'>LancamentoId</th>");
+        cabecalho.append("<th class='col-sm-6'>Taxa</th>");
+        cabecalho.append("<th class='col-sm-2'>Vencimento</th>");
+        cabecalho.append("<th class='col-sm-2'>Valor</th>");
+        cabecalho.append("<th class='col-sm-2'>Selecionar</th>");
         cabecalho.append("</tr>");
         $("#tableLancamentos > thead").append(cabecalho);
         for (var i = 0; i < lancamentos.length; i++) {
             var row = $("<tr>");
+            row.append("<td hidden='hidden'>" + lancamentos[i].LancamentoId + "</td>");
             row.append("<td>" + lancamentos[i].Taxa.Nome + "</td>");
             row.append("<td>" + retornaData(new Date(parseInt(lancamentos[i].DataVencimento.substr(6, 13)))) + "</td>");
             row.append("<td>" + lancamentos[i].Taxa.Valor + "</td>");
@@ -171,20 +189,20 @@ function retornaData(data) {
 }
 function calculaValorTotal(selecionado) {
     var valorTotal = 0;
-    selecionado.closest("tr").find("td:eq(3) button").toggleClass("btn-info btn-success");
+    selecionado.closest("tr").find("td:eq(4) button").toggleClass("btn-info btn-success");
     $("#tableLancamentos .btn-success").each(function () {
-        valorTotal += parseFloat($(this).closest("tr").find("td:eq(2)").text());
+        valorTotal += parseFloat($(this).closest("tr").find("td:eq(3)").text());
     });
     $("#txtValor").val(valorTotal.toFixed(2));
     if ($("#tableLancamentos .btn-info").length == 0) {
-        $("#btSelecionaTodasTaxas").removeClass("btn-primary").addClass("btn-success");
+        $("#btSelecionaTodosLancamentos").removeClass("btn-primary").addClass("btn-success");
     }
     else {
-        $("#btSelecionaTodasTaxas").removeClass("btn-success").addClass("btn-primary");
+        $("#btSelecionaTodosLancamentos").removeClass("btn-success").addClass("btn-primary");
     }
 }
-function selecionaTodasTaxas() {
-    if ($("#btSelecionaTodasTaxas").hasClass("btn-primary")) {
+function selecionaTodosLancamentos() {
+    if ($("#btSelecionaTodosLancamentos").hasClass("btn-primary")) {
         $("#tableLancamentos .btn-info").each(function () {
             $(this).click();
         });
@@ -193,5 +211,39 @@ function selecionaTodasTaxas() {
         $("#tableLancamentos .btn-success").each(function () {
             $(this).click();
         });
+    }
+}
+function cadastra() {
+    $.ajax({
+        type: "POST",
+        url: "/Caixa/Create/",
+        data: JSON.stringify(preencheDados()),
+        cache: false,
+        contentType: "application/json;charset=utf-8",
+        success: function (retorno) {
+            if (retorno.Success) {
+                alert("Recebimento cadastrado com sucesso.");
+            }
+            else {
+                alert("Erro ao cadastrar recebimento.");
+            }
+            window.location.href = "/";
+        }
+    });
+}
+function preencheDados() {
+    var lancamentos = new Array();
+    $("#tableLancamentos .btn-success").each(function () {
+        var lancamento = {
+            LancamentoId: $(this).closest("tr").find("td:eq(0)").text(),
+            DataVencimento: $(this).closest("tr").find("td:eq(2)").text(),
+            Valor: $(this).closest("tr").find("td:eq(3)").text().replace(".", ",")
+        };
+        lancamentos.push(lancamento);
+    });
+    return {
+        valor: $("#txtValor").val().replace(".", ","),
+        Pessoa: { PessoaId: $("#txtCodigo").val() },
+        lancamentos: lancamentos
     }
 }

@@ -3,6 +3,8 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using Tesouraria.Dominio.Interfaces.Repositorios;
 using Tesouraria.Infraestrutura.Dados.Contexto;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 
 namespace Tesouraria.Infraestrutura.Dados.Repositorios
 {
@@ -10,7 +12,7 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
     {
         protected TesourariaContexto _context = new TesourariaContexto();
 
-        public void Salva(T obj)
+        public virtual void Salva(T obj)
         {
             _context.Set<T>().AddOrUpdate(obj);
             GravaNoBancoDeDados();
@@ -24,11 +26,13 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
 
         public virtual T ObtemPorId(int id)
         {
+            AtualizaContexto();
             return _context.Set<T>().Find(id);
         }
 
         public virtual IList<T> ObtemTodos()
         {
+            AtualizaContexto();
             return _context.Set<T>().ToList();
         }
 
@@ -45,8 +49,13 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
                 {
                     transacao.Rollback();
                 }
-                transacao.Dispose();
-            }
+            }           
+        }
+
+        protected void AtualizaContexto()
+        {
+            var objetosAlterados = _context.ChangeTracker.Entries().Select(x => x.Entity).ToList();
+            ((IObjectContextAdapter)_context).ObjectContext.Refresh(RefreshMode.StoreWins, objetosAlterados);          
         }
     }
 }

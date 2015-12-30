@@ -39,13 +39,13 @@ namespace Tesouraria.Infraestrutura.InjecaoDependencia
             _unityContainer
                 .RegisterType<IPessoaRepositorio, PessoaRepositorio>(new InjectionConstructor())
                 .RegisterType<ITaxaRepositorio, TaxaRepositorio>(new InjectionConstructor())
-                .RegisterType<ICaixaRepositorio, CaixaRepositorio>(new InjectionConstructor())
                 .RegisterType<ILancamentoRepositorio, LancamentoRepositorio>(new InjectionConstructor())
+                .RegisterType<ICaixaRepositorio, CaixaRepositorio>(new InjectionConstructor())
 
                 .RegisterType<IPessoaServicos, PessoaServicos>(new InjectionConstructor(_unityContainer.Resolve<IPessoaRepositorio>()))
                 .RegisterType<ITaxaServicos, TaxaServicos>(new InjectionConstructor(_unityContainer.Resolve<ITaxaRepositorio>()))
-                .RegisterType<ICaixaServicos, CaixaServicos>(new InjectionConstructor(_unityContainer.Resolve<ICaixaRepositorio>()))
                 .RegisterType<ILancamentoServicos, LancamentoServicos>(new InjectionConstructor(_unityContainer.Resolve<ILancamentoRepositorio>()))
+                .RegisterType<ICaixaServicos, CaixaServicos>(new InjectionConstructor(_unityContainer.Resolve<ICaixaRepositorio>()))
                 ;
         }
     }

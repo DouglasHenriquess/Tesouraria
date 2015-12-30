@@ -1,5 +1,4 @@
-﻿@model Tesouraria.Apresentacao.ViewModels.CaixaViewModel
-@{
+﻿@{
     ViewBag.Title = "Recebimento de Taxas";
 }
 <h2 class="portlet-title">
@@ -14,7 +13,7 @@
 <hr />
 <br />
 <fieldset>
-    @Html.Partial("Form", Model)
-    @Html.Partial("ModalPessoas", Model)
+    @Html.Partial("Form")
+    @Html.Partial("ModalPessoas")
 </fieldset>
 <script type="text/javascript" src="~/Scripts/Tesouraria/Caixa/Caixa.js"></script>

@@ -1,14 +1,13 @@
-﻿@model Tesouraria.Apresentacao.ViewModels.CaixaViewModel
-<div class="container">
+﻿<div class="container">
     <div class="col-sm-6">
         <div class="row form-group">
             <div class="col-sm-12">
                 @Html.Label("Código", new { @class = "control-label" })
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 @Html.TextBox("txtCodigo", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalPessoas"
                     id="btModalPessoas">
                     <span class="fa fa-user"></span><span>&nbsp;Selecionar Pessoa</span>
@@ -37,16 +36,16 @@
             <div class="col-sm-12">
                 @Html.Label("Valor Total", new { @class = "control-label" })
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 @Html.TextBox("txtValor", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <div class="btn-group-vertical pull-right">
-                    <button type="button" class="btn btn-primary" id="btSelecionaTodasTaxas">
-                        <span class="fa fa-check-square-o">&nbsp;&nbsp;Selecionar Todas as Taxas</span>
+                    <button type="button" class="btn btn-primary" id="btSelecionaTodosLancamentos">
+                        <span class="fa fa-check-square-o">&nbsp;&nbsp;Selecionar Todos os Lançamentos</span>
                     </button>
                     <button type="button" class="btn btn-primary" id="btLancamentosFuturos">
-                        <span class="fa fa-clock-o">&nbsp;&nbsp;Buscar Futuras Taxas</span>
+                        <span class="fa fa-clock-o">&nbsp;&nbsp;Buscar Lançamentos Futuros</span>
                     </button>
                 </div>
             </div>

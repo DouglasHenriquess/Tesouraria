@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Tesouraria.Dominio.Entidades
 {
@@ -6,6 +7,8 @@ namespace Tesouraria.Dominio.Entidades
     {
         public int CaixaId { get; set; }
         public decimal Valor { get; set; }
+        public DateTime DataPagamento { get; set; }
+        public Pessoa Pessoa { get; set; }
         public IList<Lancamento> Lancamentos { get; set; }
     }
 }

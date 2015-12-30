@@ -75,13 +75,13 @@ function preencheDados() {
         var taxa = {
             TaxaId: $(this).find("td:eq(0)").text(),
             Valor: $(this).find("td:eq(2)").text()
-        }
+        };
         taxas.push(taxa);
     });
     $("#tablePessoasSelecionadas > tbody tr").each(function () {
         var pessoa = {
             PessoaId: $(this).find("td:eq(0)").text()
-        }
+        };
         pessoas.push(pessoa);
     });
     return {
