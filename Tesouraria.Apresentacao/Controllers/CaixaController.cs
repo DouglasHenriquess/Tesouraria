@@ -14,6 +14,40 @@ namespace Tesouraria.Apresentacao.Controllers
         private readonly ILancamentoServicos _lancamentoServicos = ResolvedorDependencias.Resolve<ILancamentoServicos>();
         private readonly ICaixaServicos _caixaServicos = ResolvedorDependencias.Resolve<ICaixaServicos>();
 
+        #region INDEX
+        public ActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(string nomePessoa, DateTime dataInicio, DateTime dataFim)
+        {
+            try
+            {
+                var recebimentos = _caixaServicos.ObtemTodos()
+                    .Where(x =>
+                        x.Pessoa.Nome != null && x.Pessoa.Nome.Contains(nomePessoa) &&
+                        x.DataPagamento.Date >= dataInicio.Date && 
+                        x.DataPagamento.Date <= dataFim.Date)
+                    .ToList();
+
+                return Json(new
+                {
+                    Success = true,
+                    Recebimentos = recebimentos
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    Success = false
+                }, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            return View();
+        }
+        #endregion
+
         #region CREATE
         public ActionResult Create()
         {

@@ -239,7 +239,8 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\Tesouraria\Caixa\Caixa.js" />
+    <Content Include="Scripts\Tesouraria\Caixa\Create.js" />
+    <Content Include="Scripts\Tesouraria\Caixa\Index.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\Lancamento.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\VinculoPessoa.js" />
     <Content Include="Scripts\Tesouraria\Lancamento\VinculoTaxa.js" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Caixa\Create.cshtml" />
     <Content Include="Views\Caixa\Form.cshtml" />
     <Content Include="Views\Caixa\ModalPessoas.cshtml" />
+    <Content Include="Views\Caixa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tesouraria.Dominio\Tesouraria.Dominio.csproj">

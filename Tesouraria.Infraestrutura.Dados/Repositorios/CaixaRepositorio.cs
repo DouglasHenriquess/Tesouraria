@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Tesouraria.Dominio.Entidades;
 using Tesouraria.Dominio.Interfaces.Repositorios;
@@ -13,6 +14,12 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
             caixa.Pessoa = _context.Pessoas.Find(caixa.Pessoa.PessoaId);
             _context.Entry(caixa).State = EntityState.Added;
             GravaNoBancoDeDados();
+        }
+
+        public override IList<Caixa> ObtemTodos()
+        {
+            AtualizaContexto();
+            return _context.Set<Caixa>().Include("Pessoa").ToList();
         }
     }
 }

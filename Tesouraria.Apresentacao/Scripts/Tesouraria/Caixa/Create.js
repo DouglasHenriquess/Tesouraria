@@ -24,7 +24,7 @@ function onObtemLancamentosFuturos() {
 }
 function onVolta() {
     $("#btVolta").click(function () {
-        window.location.href = "/";
+        window.location.href = "/Caixa/Index";
     });
 }
 function onSalva() {
@@ -227,7 +227,7 @@ function cadastra() {
             else {
                 alert("Erro ao cadastrar recebimento.");
             }
-            window.location.href = "/";
+            window.location.href = "/Caixa/Create/";
         }
     });
 }
@@ -245,5 +245,5 @@ function preencheDados() {
         valor: $("#txtValor").val().replace(".", ","),
         Pessoa: { PessoaId: $("#txtCodigo").val() },
         lancamentos: lancamentos
-    }
+    };
 }

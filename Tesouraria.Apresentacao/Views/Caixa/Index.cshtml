@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Recebimento de Taxas";
+}
+<h2 class="portlet-title">
+    <i class="fa fa-calendar-check-o">&nbsp;Recebimento de Taxas</i>
+    <button type="button" class="btn btn-primary pull-right" id="btNovo">
+        <span class="fa fa-file"></span><span>&nbsp;Novo Recebimento</span>
+    </button>
+</h2>
+<hr />
+<br />
+<div class="col-sm-12">
+    <fieldset>
+        <div class="panel" style="background-color: #EEEEEE">
+            <div class="panel-heading">
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <div class="col-sm-12">
+                            @Html.Label("Nome", new { @class = "control-label" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.TextBox("txtNomePessoa", null, new { @class = "form-control", @style = "text-transform: uppercase" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="col-sm-12">
+                            @Html.Label("De", new { @class = "control-label" })
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="input-group date" id="inputGroupInicio">
+                                <input type="text" class="form-control" id="datePickerInicio" readonly="true" />
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="col-sm-12">
+                            @Html.Label("Até", new { @class = "control-label" })
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="input-group date" id="inputGroupFim">
+                                <input type="text" class="form-control" id="datePickerFim" readonly="true" />
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <br />
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary pull-right" id="btPesquisa">
+                                <span class="fa fa-search">&nbsp;Buscar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<div class="col-sm-12" style="margin-bottom: 50px;">
+    <table class="table table-striped table-bordered" id="tableRecebimentos">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="~/Scripts/Tesouraria/Caixa/Index.js"></script>

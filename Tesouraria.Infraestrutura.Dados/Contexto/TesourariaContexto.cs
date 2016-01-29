@@ -8,7 +8,7 @@ namespace Tesouraria.Infraestrutura.Dados.Contexto
     public class TesourariaContexto : DbContext
     {
         public TesourariaContexto()
-            : base("Tesouraria_desenv")
+            : base("Tesouraria")
         {
             Configuration.ProxyCreationEnabled = true;
             Configuration.LazyLoadingEnabled = true;

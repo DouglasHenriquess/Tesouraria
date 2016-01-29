@@ -89,5 +89,5 @@ function preencheDados() {
         dataFim: "10/" + $("#datePickerFim").val(),
         taxas: taxas,
         pessoas: pessoas
-    }
+    };
 }

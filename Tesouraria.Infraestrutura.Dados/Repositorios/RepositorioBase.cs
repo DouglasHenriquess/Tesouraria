@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Tesouraria.Dominio.Interfaces.Repositorios;
 using Tesouraria.Infraestrutura.Dados.Contexto;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Core.Objects;
 
 namespace Tesouraria.Infraestrutura.Dados.Repositorios
 {
@@ -49,13 +49,13 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
                 {
                     transacao.Rollback();
                 }
-            }           
+            }
         }
 
         protected void AtualizaContexto()
         {
             var objetosAlterados = _context.ChangeTracker.Entries().Select(x => x.Entity).ToList();
-            ((IObjectContextAdapter)_context).ObjectContext.Refresh(RefreshMode.StoreWins, objetosAlterados);          
+            ((IObjectContextAdapter)_context).ObjectContext.Refresh(RefreshMode.StoreWins, objetosAlterados);
         }
     }
 }

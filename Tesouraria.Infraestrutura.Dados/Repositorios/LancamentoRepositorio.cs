@@ -24,6 +24,5 @@ namespace Tesouraria.Infraestrutura.Dados.Repositorios
             AtualizaContexto();
             return _context.Set<Lancamento>().Include("Pessoa").Include("Taxa").ToList();
         }
-        public override 
     }
 }
